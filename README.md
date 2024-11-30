@@ -14,11 +14,11 @@ git clone git@github.com:peterhoward42/accounts.git
 pip install -r accounts/requirements.txt
 ```
 
-### Run the service (with the FastAPI CLI)
+### Run the service
 
 ```
 cd accounts/api
-fastapi dev main.py
+python main.py
 ```
 
 ###  Try out the service
