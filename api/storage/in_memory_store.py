@@ -1,12 +1,13 @@
-from typing import Tuple
+from typing import List, Tuple
 from models.transaction import Transaction
 
-module_scope_store: Tuple[Transaction] = []
+module_scope_store: List[Transaction] = []
 
-def store_transactions(transactions: Tuple[Transaction]):
-    # Store a read-only copy.
-    module_scope_store = tuple(transactions)
+def store_transactions(transactions: List[Transaction]):
+    # We are making the assumption that the incoming transactions should
+    # be stored in place of any previously stored.
+    module_scope_store.clear()
+    module_scope_store.extend(transactions)
     
 def retrieve_transactions() -> Tuple[Transaction]:
-    # Return a read-only representation. 
     return module_scope_store
