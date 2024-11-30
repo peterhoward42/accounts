@@ -15,6 +15,8 @@ async def add_transactions(csv_data: bytes) -> List[Transaction]:
     
     transactions = []
     for line in lines:
+        if len(line) == 0:
+            continue
         if line.isspace():
             continue
         if line[0] == "#":

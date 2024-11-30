@@ -18,8 +18,8 @@ You can:
 """
 app = FastAPI(title="Tax Accounts API", description=description)
 
-@app.post("/transactions", name='Upload transactions from CSV file')
-async def handle_transactions(data: Annotated[bytes, File()]) -> List[Transaction]:
+@app.post("/transactions", status_code=201, name='Upload transactions from CSV file')
+def handle_transactions(data: Annotated[bytes, File()]) -> List[Transaction]:
     """
     The file you choose for '''data''' in the request body should contain lines like
     these:
@@ -29,11 +29,11 @@ async def handle_transactions(data: Annotated[bytes, File()]) -> List[Transactio
     2020-07-04, Income, 40.00, 347 Woodrow
     ```
     """
-    return await add_transactions(data) 
+    return add_transactions(data) 
 
 @app.get("/report", name='Get a summary report')
-async def handle_get_report() -> Report:
-    return await make_report()
+def handle_get_report() -> Report:
+    return make_report()
 
 
 if __name__ == "__main__":
