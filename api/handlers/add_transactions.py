@@ -4,7 +4,7 @@ from fastapi import HTTPException
 from models.transaction import Transaction
 from storage.in_memory_store import store_transactions
 
-async def add_transactions(csv_data: bytes) -> List[Transaction]:
+def add_transactions(csv_data: bytes) -> List[Transaction]:
     
     try:
         s = csv_data.decode('UTF-8')
@@ -25,7 +25,7 @@ async def add_transactions(csv_data: bytes) -> List[Transaction]:
         transaction = parse_transaction(line)
         transactions.append(transaction)
     
-    await store_transactions(transactions)
+    store_transactions(transactions)
        
     return transactions
 

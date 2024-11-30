@@ -17,7 +17,7 @@ pip install -r accounts/requirements.txt
 ### Run the service (with the FastAPI CLI)
 
 ```
-cd accounts
+cd accounts/api
 fastapi dev main.py
 ```
 
